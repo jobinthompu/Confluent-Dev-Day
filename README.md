@@ -1,18 +1,31 @@
 # Seamlessly streaming data from Confluent Cloud into Amazon Redshift
 
 Short Introduction
+
 Kafka Connect – Confluent Cloud Redshift Connector
+
 Prerequisites
+
 Creating AWS Resources required for Redshift Streaming Module
+
 Creating Confluent Cloud Resources
+
 	Creating a Kafka Cluster
+	
 	Creating a Kafka Topic 
+	
 	Creating Kafka API Keys
-	Enabling Schema Registry for Confluent cloud and Create API Keys  
+	
+	Enabling Schema Registry for Confluent cloud and Create API Keys
+	  
 	Configuring Confluent Cloud Redshift Sink Connector
+	
 	Launching Lambda Streaming function to ingest data into Kafka Topic
+	
 	Preview Data Ingested into Redshift table from Query Editor console
+	
 Clean Up
+
 Conclusion
 
  
