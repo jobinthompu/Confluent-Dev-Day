@@ -127,3 +127,37 @@ While on the Lambda console, click on the Test button on the top right corner to
 ![alt tag]
 
 On the ‘configure test event’ pop-up provide below json record, which in below format with fields listed for function to run. Provide a name for the test event and click Save to create test event.
+
+	{
+  	"BOOTSTRAP_SERVERS": "<YOUR_KAFKA_BOOTSTRAP_SERVER>",
+  	"API_KEY": "<YOUR_KAFKA_API_KEY>",
+  	"API_SECRET": "<YOUR_KAFKA_API_SECRET>",
+  	"SR_URL": " <YOUR_SCHEMA_REGISTRY_URL>",
+  	"SR_AUTH_KEY": "<YOUR_SCHEMA_REGISTRY_KEY>",
+  	"SR_AUTH_SECRET": "<YOUR_SCHEMA_REGISTRY_SECRET>",
+  	"BUCKET": "streaming-data-repo",
+  	"TOPIC": " redtopic"
+	}
+
+![alt tag]
+
+Once saved, click test again to launch the function to stream data into the Kafka Topic provided in the configuration. Once clicked the function will run for 2minutes before it times out. [Timeout can be adjusted in the lambda configuration from console itself, its set to make sure streaming is stopped to avoid resource consumption]
+
+
+Now let’s navigate to Redshift Query Editor from AWS console to verify the data loaded into the Table. The table will be having the same name as the topic if you left the redshift connector configurations to default. 
+
+Once On the Redshift Query Editor, select the cluster and login with redshift cluster credentials provided earlier. Select the ‘Public’ Schema and choose the table ‘redtopic’ and right click and choose option ‘Preview Data’. 
+
+![alt tag]
+
+You should be able to view the data streamed by the redshift connector. You may query the data or connect to Amazon QuickSight to start  visualizing it. With this we have come to end of this blog post.
+
+## Clean Up
+
+- Once you complete the exercise go ahead and delete the Topic/Cluster you created in confluent cloud not to incur any unwanted resource consumption
+- When you finish also remember to clean up all AWS resources that you created using AWS CloudFormation. Use the AWS CloudFormation console or AWS CLI to delete the stack named “Confluent-Redshift-Connector”.
+
+## Conclusion
+
+In this post, we learned about Confluent Cloud, its Architecture and how it can help you stream data from Kafka topics to Redshift with Kafka connect. Did hands-on steps to launch a Redshift Cluster, Created a Kafka Cluster in Confluent Cloud, setup Redshift connector and streamed data directly into Redshift Table.  
+Confluent Cloud offers a serverless experience with elastic scaling and pricing that charges only for what you stream. If you would like to learn more about Confluent Cloud , Sign-Up for a Confluent Cloud Account
