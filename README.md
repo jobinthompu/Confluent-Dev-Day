@@ -89,7 +89,20 @@ Navigate back to Cluster and click Connectors on the left navigation bar. From t
 
 On the Add Amazon Redshift Sink Connector page, enter below information. You can leave non mandatory fields empty, it will pick default values:
 
-| :------------ |:---------------:|
-| Topics      | redtopic | 
-| Name     | RedshiftConnector        |
-| Kafka API Key | are neat        |
+| Key	        		| Value         								| 
+| ----------------------|:---------------------------------------------:| 
+| Topics      			| redtopic										| 
+| Name      			| RedshiftConnector      						|  
+| Kafka API Key 		| <Kafka_Key>									| 
+| Kafka API Secret 		| <Kafka_Secret>      							| 
+| Input message format 	| Avro      									| 
+| AWS Redshift domain 	| <Redshift Host from CloudFormation output>  	| 
+| AWS Redshift port 	| 5439      									| 
+| Connection user 		| awsuser      									| 
+| Connection password 	| Awsuser01     								| 
+| Database name 		| streaming-data      							| 
+| Database timezone 	| <Select your timezone>      					| 
+| Auto create table 	| True      									| 
+| Auto add columns 		| True		    								| 
+| Tasks			 		| 1												| 
+
