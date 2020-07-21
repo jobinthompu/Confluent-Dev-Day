@@ -89,6 +89,7 @@ Navigate back to Cluster and click Connectors on the left navigation bar. From t
 
 On the Add Amazon Redshift Sink Connector page, enter below information. You can leave non mandatory fields empty, it will pick default values:
 
+| Key	        		| Value         								| 
 | ----------------------|:---------------------------------------------:| 
 | Topics      			| redtopic										| 
 | Name      			| RedshiftConnector      						|  
