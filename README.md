@@ -11,7 +11,7 @@ Creating Confluent Cloud Resources
 	Enabling Schema Registry for Confluent cloud and Create API Keys  
 	Configuring Confluent Cloud Redshift Sink Connector
 	Launching Lambda Streaming function to ingest data into Kafka Topic
-	Preview Data Ingested into Redshift table from Query Editor console 
+	Preview Data Ingested into Redshift table from Query Editor console
 Clean Up
 Conclusion
 
