@@ -93,16 +93,37 @@ On the Add Amazon Redshift Sink Connector page, enter below information. You can
 | ----------------------|:---------------------------------------------:| 
 | Topics      			| redtopic										| 
 | Name      			| RedshiftConnector      						|  
-| Kafka API Key 		| <<Kafka Key>>									| 
-| Kafka API Secret 		| <<Kafka Secret>>      						| 
+| Kafka API Key 		| [Kafka Key]									| 
+| Kafka API Secret 		| [Kafka Secret]	      						| 
 | Input message format 	| Avro      									| 
-| AWS Redshift domain 	| <<Redshift Host from CloudFormation output>> 	| 
+| AWS Redshift domain 	| [Redshift Host from CloudFormation output] 	| 
 | AWS Redshift port 	| 5439      									| 
 | Connection user 		| awsuser      									| 
 | Connection password 	| Awsuser01     								| 
 | Database name 		| streaming-data      							| 
-| Database timezone 	| <<Select your timezone>>     					| 
+| Database timezone 	| [Select your timezone]     					| 
 | Auto create table 	| True      									| 
 | Auto add columns 		| True		    								| 
 | Tasks			 		| 1												| 
 
+![alt tag]
+
+Click Continue to proceed and on the test and verify page, click launch to deploy the redshift connector.
+
+![alt tag]
+
+In a few minutes, the connector will be in running state and you are set to start streaming.
+
+![alt tag]
+
+### Launching Lambda Streaming function to ingest data into Kafka Topic
+
+Now let’s navigate back to the CloudFormation Resources page and click on the ConfluentStreamingFunction Physical id link to launch Lambda console. 
+
+![alt tag]
+
+While on the Lambda console, click on the Test button on the top right corner to simulate streaming data. 
+
+![alt tag]
+
+On the ‘configure test event’ pop-up provide below json record, which in below format with fields listed for function to run. Provide a name for the test event and click Save to create test event.
