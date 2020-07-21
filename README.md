@@ -1,10 +1,10 @@
 # Seamlessly streaming data from Confluent Cloud into Amazon Redshift
 
-[Short Introduction](https://github.com/jobinthompu/Confluent-Dev-Day#short-introduction)
-[Kafka Connect – Confluent Cloud Redshift Connector](https://github.com/jobinthompu/Confluent-Dev-Day#kafka-connect--confluent-cloud-redshift-connector)
-[Prerequisites](https://github.com/jobinthompu/Confluent-Dev-Day#prerequisites)
-[Creating AWS Resources required for Redshift Streaming Module](https://github.com/jobinthompu/Confluent-Dev-Day#creating-aws-resources-required-for-redshift-streaming-module)
-[Creating Confluent Cloud Resources](https://github.com/jobinthompu/Confluent-Dev-Day#creating-confluent-cloud-resources)
+ [Short Introduction](https://github.com/jobinthompu/Confluent-Dev-Day#short-introduction)
+ [Kafka Connect – Confluent Cloud Redshift Connector](https://github.com/jobinthompu/Confluent-Dev-Day#kafka-connect--confluent-cloud-redshift-connector)
+ [Prerequisites](https://github.com/jobinthompu/Confluent-Dev-Day#prerequisites)
+ [Creating AWS Resources required for Redshift Streaming Module](https://github.com/jobinthompu/Confluent-Dev-Day#creating-aws-resources-required-for-redshift-streaming-module)
+ [Creating Confluent Cloud Resources](https://github.com/jobinthompu/Confluent-Dev-Day#creating-confluent-cloud-resources)
 - [Creating a Kafka Cluster](https://github.com/jobinthompu/Confluent-Dev-Day#creating-a-kafka-cluster)
 - [Creating a Kafka Topic](https://github.com/jobinthompu/Confluent-Dev-Day#creating-a-kafka-topic)
 - [Creating Kafka API Keys](https://github.com/jobinthompu/Confluent-Dev-Day#creating-kafka-api-keys)
@@ -12,8 +12,8 @@
 - [Configuring Confluent Cloud Redshift Sink Connector](https://github.com/jobinthompu/Confluent-Dev-Day#configuring-confluent-cloud-redshift-sink-connector)
 - [Launching Lambda Streaming function to ingest data into Kafka Topic](https://github.com/jobinthompu/Confluent-Dev-Day#launching-lambda-streaming-function-to-ingest-data-into-kafka-topic)
 - [Preview Data Ingested into Redshift table from Query Editor console](https://github.com/jobinthompu/Confluent-Dev-Day#preview-data-ingested-into-redshift-table-from-console)
-[Clean Up](https://github.com/jobinthompu/Confluent-Dev-Day#clean-up)
-[Conclusion](https://github.com/jobinthompu/Confluent-Dev-Day#conclusion)
+ [Clean Up](https://github.com/jobinthompu/Confluent-Dev-Day#clean-up)
+ [Conclusion](https://github.com/jobinthompu/Confluent-Dev-Day#conclusion)
 
  
 ## Short Introduction:
