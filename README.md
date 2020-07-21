@@ -40,7 +40,7 @@ On the Quick Create Stack page, acknowledge the resource creations and click ‘
 Once created navigate to the Stack Output tab and note down Redshift End Point and Lambda Function Name. We will require it for future steps. 
 
 
-![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CFT-Output.png)
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateCluster.png)
 
 ## Creating Confluent Cloud Resources
 
@@ -50,7 +50,7 @@ Now let’s Launch Confluent Cloud Console from another tab on the browser: http
 
 Once logged in, click on the Create Cluster Icon on the screen to create a new Kafka Cluster. If you already have a cluster, you can create a new topic to complete the exercise.
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ClusterConf.png)
 
 
 On the next page,  let’s provide a name for the Cluster, say Data2Redshift and Select Provider as Amazon Web Service, Region as us-east-1 and click continue. In a few mins your cluster will be ready to use. Once created, you can navigate to ‘Cluster Settings’ and note down the Bootstrap Server address, which you will need in the later part of this exercise.
@@ -59,33 +59,33 @@ On the next page,  let’s provide a name for the Cluster, say Data2Redshift and
 
 Once the cluster is started, let's create a topic. Click on the cluster, click Topics on the left navigation bar. Give a name say ‘redtopic’ and select the number of partitions required. Default is 6 and click ‘Create with Defaults’.
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateTopic.png)
 
 ### Creating Kafka API Keys  
 
 Once the topic is created, click on Kafka API Keys left navigation bar. And click Create Key. 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateAPI0.png)
 
 On the Create an API Key pop-up, make sure to note down the Key and Secret before clicking continue as you will not be able to view the secret once the pop-up closes. You will be needing it in the later steps.
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateAPI1.png)
 
 ### Enabling Schema Registry for Confluent cloud and Create API Keys  
 
 Click Schemas on the navigation bar, Choose Amazon Web Services (AWS) as cloud provider, region as US and click Enable Schema Registry. Note down the Schema Registry endpoint URL, you will need it in the later steps. Next Click on Manage API Keys as show below:
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/EnableSR0.png)
 
 On the API Access tab, click ‘Create Key’ and On the Create a new Schema Registry API Key pop-up, make sure to note down the Key and Secret before clicking continue as you will not be able to view the secret once the pop-up closes. You will be needing it in the later steps. Click Continue and proceed 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/EnableSR1.png)
 
 ### Configuring Confluent Cloud Redshift Sink Connector  
 
 Navigate back to Cluster and click Connectors on the left navigation bar. From the options select Redshift Sink. 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/AddSink.png)
 
 On the Add Amazon Redshift Sink Connector page, enter below information. You can leave non mandatory fields empty, it will pick default values:
 
@@ -106,25 +106,25 @@ On the Add Amazon Redshift Sink Connector page, enter below information. You can
 | Auto add columns 		| True		    								| 
 | Tasks			 		| 1												| 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ConfigureSink.png)
 
 Click Continue to proceed and on the test and verify page, click launch to deploy the redshift connector.
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ConfigureSink1.png)
 
 In a few minutes, the connector will be in running state and you are set to start streaming.
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ConnectorRunning.png)
 
 ### Launching Lambda Streaming function to ingest data into Kafka Topic
 
 Now let’s navigate back to the CloudFormation Resources page and click on the ConfluentStreamingFunction Physical id link to launch Lambda console. 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CfOutPut.png)
 
 While on the Lambda console, click on the Test button on the top right corner to simulate streaming data. 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/StreamingFunc.png)
 
 On the ‘configure test event’ pop-up provide below json record, which in below format with fields listed for function to run. Provide a name for the test event and click Save to create test event.
 
@@ -139,7 +139,7 @@ On the ‘configure test event’ pop-up provide below json record, which in bel
   	"TOPIC": " redtopic"
 	}
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ConfigureTest.png)
 
 Once saved, click test again to launch the function to stream data into the Kafka Topic provided in the configuration. Once clicked the function will run for 2minutes before it times out. [Timeout can be adjusted in the lambda configuration from console itself, its set to make sure streaming is stopped to avoid resource consumption]
 
@@ -148,7 +148,7 @@ Now let’s navigate to Redshift Query Editor from AWS console to verify the dat
 
 Once On the Redshift Query Editor, select the cluster and login with redshift cluster credentials provided earlier. Select the ‘Public’ Schema and choose the table ‘redtopic’ and right click and choose option ‘Preview Data’. 
 
-![alt tag]
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/PreviewTable.png)
 
 You should be able to view the data streamed by the redshift connector. You may query the data or connect to Amazon QuickSight to start  visualizing it. With this we have come to end of this blog post.
 
