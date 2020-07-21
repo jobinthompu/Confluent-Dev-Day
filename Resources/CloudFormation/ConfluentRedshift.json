@@ -1,0 +1,184 @@
+{
+    "Resources": {
+        "LauncherRole": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                            },
+                            "Action": "sts:AssumeRole"
+                        }
+                    ]
+                }
+            }
+        },
+        "StreamingFunction": {
+            "Type": "AWS::Lambda::Function",
+            "DependsOn": "LauncherRole",
+            "Properties": {
+                "Handler": "AvroProducer.lambda_handler",
+                "Runtime": "python3.7",
+                "FunctionName":"ConfluentStreamingFunction",
+                "Code": {
+                    "S3Bucket": "confluent-demo",
+                    "S3Key": "AvroProducerLambda.zip"
+                },
+                "Description": "The lambda function that stimulate streaming data into Confluent Cloud Kafka Cluster",
+                "MemorySize": 1024,
+                "Timeout": 120,
+                "Role": {
+                    "Fn::GetAtt": [
+                        "LauncherRole",
+                        "Arn"
+                    ]
+                }
+            }
+        },
+        "VPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "EnableDnsSupport": true,
+                "EnableDnsHostnames": true,
+                "CidrBlock":"10.0.0.0/16",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "CONFLUENT-DEMO-VPC"
+                    }
+                ]
+            }
+        },
+        "InternetGateway": {
+            "Type": "AWS::EC2::InternetGateway"
+        },
+        "GatewayAttachement": {
+            "Type": "AWS::EC2::VPCGatewayAttachment",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "InternetGatewayId": {
+                    "Ref": "InternetGateway"
+                }
+            }
+        },
+        "PublicRouteTable": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                }
+            }
+        },
+        "PublicRoute": {
+            "Type": "AWS::EC2::Route",
+            "DependsOn": "GatewayAttachement",
+            "Properties": {
+                "RouteTableId": {
+                    "Ref": "PublicRouteTable"
+                },
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "GatewayId": {
+                    "Ref": "InternetGateway"
+                }
+            }
+        },
+        "PublicSubnetOneRouteTableAssociation": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "PublicSubnetOne"
+                },
+                "RouteTableId": {
+                    "Ref": "PublicRouteTable"
+                }
+            }
+        },
+        "ConfluentSecurityGroup": {
+            "Type": "AWS::EC2::SecurityGroup",
+            "Properties": {
+                "GroupDescription": "Enable Cluster access via port 5439",
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "SecurityGroupIngress": [
+                    {
+                        "IpProtocol": "tcp",
+                        "FromPort": 5439,
+                        "ToPort": 5439,
+                        "CidrIp":  "0.0.0.0/0"
+                    }
+                ]
+            }
+        },
+        "PublicSubnetOne": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "AvailabilityZone": {
+                    "Fn::Select": [
+                        0,
+                        {
+                            "Fn::GetAZs": {
+                                "Ref": "AWS::Region"
+                            }
+                        }
+                    ]
+                },
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "CidrBlock": "10.0.0.0/24",
+                "MapPublicIpOnLaunch": true,
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": "ConfluentDemoPublicSubnet"
+                    }
+                ]
+            }
+        },
+        "RedshiftCluster" : {
+      		"Type" : "AWS::Redshift::Cluster",
+      		"DependsOn" : "ConfluentSecurityGroup",
+     		"Properties" : {
+        	"ClusterType" : "single-node",
+        	"NodeType" : "dc2.large",
+        	"DBName" : "streaming-data" ,
+        	"MasterUsername" : "awsuser",
+        	"MasterUserPassword" : "Awsuser01" ,               
+        	"ClusterParameterGroupName" : { "Ref" : "RedshiftClusterParameterGroup" },
+        	"VpcSecurityGroupIds" : [ { "Ref" : "ConfluentSecurityGroup" } ],
+        	"ClusterSubnetGroupName" : { "Ref" : "RedshiftClusterSubnetGroup" },
+        	"PubliclyAccessible" : "true",
+        	"Port" : "5439"
+      }
+    },
+    	"RedshiftClusterParameterGroup" : {
+     		 "Type" : "AWS::Redshift::ClusterParameterGroup",
+      		"Properties" : {
+        		"Description" : "Cluster parameter group",
+        		"ParameterGroupFamily" : "redshift-1.0",
+        		"Parameters" : [{
+          			"ParameterName" : "enable_user_activity_logging",
+          			"ParameterValue" : "true"
+        		}]
+      }
+    },
+    	"RedshiftClusterSubnetGroup" : {
+      		"Type" : "AWS::Redshift::ClusterSubnetGroup",
+      		"Properties" : {
+       		 	"Description" : "Cluster subnet group",
+        		"SubnetIds" : [ { "Ref" : "PublicSubnetOne" } ]
+      	}
+    }
+	},
+    "Outputs": {
+    	"StreamingFunctionName":{"Description": "Streaming Producer function Name, Once started, runs for 2 minutes by default", "Value" : { "Ref" : "StreamingFunction" }},
+    	"RedshiftEndpoint" : {"Description" : "Redshift Cluster endpoint","Value" : { "Fn::Join" : [ ":", [ { "Fn::GetAtt" : [ "RedshiftCluster", "Endpoint.Address" ] }, { "Fn::GetAtt" : [ "RedshiftCluster", "Endpoint.Port" ] } ] ] }}
+   	}
+}
