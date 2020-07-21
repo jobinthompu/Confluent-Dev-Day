@@ -1,5 +1,21 @@
 # Seamlessly streaming data from Confluent Cloud into Amazon Redshift
 
+Short Introduction
+Kafka Connect – Confluent Cloud Redshift Connector
+Prerequisites
+Creating AWS Resources required for Redshift Streaming Module
+Creating Confluent Cloud Resources
+	Creating a Kafka Cluster
+	Creating a Kafka Topic 
+	Creating Kafka API Keys
+	Enabling Schema Registry for Confluent cloud and Create API Keys  
+	Configuring Confluent Cloud Redshift Sink Connector
+	Launching Lambda Streaming function to ingest data into Kafka Topic
+	Preview Data Ingested into Redshift table from Query Editor console
+Clean Up
+Conclusion
+
+ 
 ## Short Introduction:
 
 There has been tremendous adoption of Apache Kafka throughout the years, and increasingly developers are using Kafka as the foundation for their event streaming applications. For this reason, it is important for developers to have access to a fully managed Apache Kafka service that frees them from operational complexities, so they don’t need to be pros in order to use the technology. 
@@ -143,6 +159,7 @@ On the ‘configure test event’ pop-up provide below json record, which in bel
 
 Once saved, click test again to launch the function to stream data into the Kafka Topic provided in the configuration. Once clicked the function will run for 2minutes before it times out. [Timeout can be adjusted in the lambda configuration from console itself, its set to make sure streaming is stopped to avoid resource consumption]
 
+### Preview Data Ingested into Redshift table from console
 
 Now let’s navigate to Redshift Query Editor from AWS console to verify the data loaded into the Table. The table will be having the same name as the topic if you left the redshift connector configurations to default. 
 
