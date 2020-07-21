@@ -38,9 +38,7 @@ Click on below button to launch the CloudFormation template which will spin-up r
 On the Quick Create Stack page, acknowledge the resource creations and click ‘Create Stack’. It may take a few minutes to complete the stack creation. Stack name is already populated as ‘Confluent-Redshift-Connector’
 
 Once created navigate to the Stack Output tab and note down Redshift End Point and Lambda Function Name. We will require it for future steps. 
-
 ![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CFT-Output.png)
-
 ## Creating Confluent Cloud Resources
 
 ### Creating a Kafka Cluster
