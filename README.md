@@ -23,7 +23,7 @@ An Overview of this excersise is below:
 
 There has been tremendous adoption of Apache Kafka throughout the years, and increasingly developers are using Kafka as the foundation for their event streaming applications. For this reason, it is important for developers to have access to a fully managed Apache Kafka service that frees them from operational complexities, so they don’t need to be pros in order to use the technology. 
 
-This is where Confluent Cloud comes in. Built as a cloud-native service, Confluent Cloud offers developers a serverless experience with elastic scaling and pricing that charges only for what you stream.
+This is where [Confluent Cloud](https://www.confluent.io/confluent-cloud) comes in. Built as a cloud-native service, Confluent Cloud offers developers a serverless experience with elastic scaling and pricing that charges only for what you stream.
 
 In this post, we provide an overview of Confluent Cloud and step-by-step instructions to show you how to seamlessly stream data from Confluent Cloud Kafka into a Redshift Table.
 
@@ -38,9 +38,9 @@ In this workshop you'll learn how to create a Kafka cluster in Confluent Cloud D
 	Fig 1: Above Architecture diagram shows how data is streamed from Confluent cloud to Redshift 
 
 ## Prerequisites
--	This Blog assumes you already have an active Confluent Cloud account. If not sign-up here: Sign-Up for a Confluent Cloud Account
+-	This Blog assumes you already have an active Confluent Cloud account. If not sign-up here: [Sign-Up for a Confluent Cloud Account](https://confluent.cloud/signup)
 
--	This Blog assumes you already have an Active AWS account. If not Create and activate a new AWS account.
+-	This Blog assumes you already have an Active AWS account. If not [Create and activate a new AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
 
 ## Creating AWS Resources required for Redshift Streaming Module
 
@@ -56,7 +56,7 @@ Click on below button to launch the CloudFormation template which will spin-up r
 
 On the Quick Create Stack page, acknowledge the resource creations and click ‘Create Stack’. It may take a few minutes to complete the stack creation. Stack name is already populated as ‘Confluent-Redshift-Connector’
 
-Once created navigate to the Stack Output tab and note down Redshift End Point and Lambda Function Name. We will require it for future steps. 
+Once created navigate to the [Stack Output](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&hideStacks=false&stackId=Confluent-Redshift-Connector) tab and note down Redshift End Point and Lambda Function Name. We will require it for future steps. 
 
 
 ![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateCluster.png)
@@ -137,7 +137,7 @@ In a few minutes, the connector will be in running state and you are set to star
 
 ### Launching Lambda Streaming function to ingest data into Kafka Topic
 
-Now let’s navigate back to the CloudFormation Resources page and click on the ConfluentStreamingFunction Physical id link to launch Lambda console. 
+Now let’s navigate back to the [CloudFormation Resources](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/resources?stackId=Confluent-Redshift-Connector) page and click on the ConfluentStreamingFunction Physical id link to launch Lambda console. 
 
 ![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CfOutPut.png)
 
@@ -164,20 +164,20 @@ Once saved, click test again to launch the function to stream data into the Kafk
 
 ### Preview Data Ingested into Redshift table from console
 
-Now let’s navigate to Redshift Query Editor from AWS console to verify the data loaded into the Table. The table will be having the same name as the topic if you left the redshift connector configurations to default. 
+Now let’s navigate to [Redshift Query Editor](https://console.aws.amazon.com/redshiftv2/home?region=us-east-1#query-editor:) from AWS console to verify the data loaded into the Table. The table will be having the same name as the topic if you left the redshift connector configurations to default. 
 
 Once On the Redshift Query Editor, select the cluster and login with redshift cluster credentials provided earlier. Select the ‘Public’ Schema and choose the table ‘redtopic’ and right click and choose option ‘Preview Data’. 
 
 ![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/PreviewTable.png)
 
-You should be able to view the data streamed by the redshift connector. You may query the data or connect to Amazon QuickSight to start  visualizing it. With this we have come to end of this blog post.
+You should be able to view the data streamed by the redshift connector. You may query the data or connect to [Amazon QuickSight](https://aws.amazon.com/quicksight/) to start  visualizing it. With this we have come to end of this blog post.
 
 ## Clean Up
 
 - Once you complete the exercise go ahead and delete the Topic/Cluster you created in confluent cloud not to incur any unwanted resource consumption
-- When you finish also remember to clean up all AWS resources that you created using AWS CloudFormation. Use the AWS CloudFormation console or AWS CLI to delete the stack named “Confluent-Redshift-Connector”.
+- When you finish also remember to clean up all AWS resources that you created using AWS CloudFormation. Use the [AWS CloudFormation console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks) or AWS CLI to delete the stack named “Confluent-Redshift-Connector”.
 
 ## Conclusion
 
 In this post, we learned about Confluent Cloud, its Architecture and how it can help you stream data from Kafka topics to Redshift with Kafka connect. Did hands-on steps to launch a Redshift Cluster, Created a Kafka Cluster in Confluent Cloud, setup Redshift connector and streamed data directly into Redshift Table.  
-Confluent Cloud offers a serverless experience with elastic scaling and pricing that charges only for what you stream. If you would like to learn more about Confluent Cloud , Sign-Up for a Confluent Cloud Account
+Confluent Cloud offers a serverless experience with elastic scaling and pricing that charges only for what you stream. If you would like to learn more about Confluent Cloud , [Sign-Up for a Confluent Cloud Account](https://confluent.cloud/signup)
