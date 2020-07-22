@@ -13,7 +13,8 @@ An Overview of this excersise is below:
 - [Enabling Schema Registry for Confluent cloud and Create API Keys](https://github.com/jobinthompu/Confluent-Dev-Day#enabling-schema-registry-for-confluent-cloud-and-create-api-keys)
 - [Configuring Confluent Cloud Redshift Sink Connector](https://github.com/jobinthompu/Confluent-Dev-Day#configuring-confluent-cloud-redshift-sink-connector)
 - [Launching Lambda Streaming function to ingest data into Kafka Topic](https://github.com/jobinthompu/Confluent-Dev-Day#launching-lambda-streaming-function-to-ingest-data-into-kafka-topic)
-- [Preview Data Ingested into Redshift table from Query Editor console](https://github.com/jobinthompu/Confluent-Dev-Day#preview-data-ingested-into-redshift-table-from-console)\
+- [Preview Data Ingested into Redshift table from Query Editor console](https://github.com/jobinthompu/Confluent-Dev-Day#preview-data-ingested-into-redshift-table-from-console)
+
 [Clean Up](https://github.com/jobinthompu/Confluent-Dev-Day#clean-up)\
 [Conclusion](https://github.com/jobinthompu/Confluent-Dev-Day#conclusion)
 
