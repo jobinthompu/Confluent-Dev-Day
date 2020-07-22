@@ -40,9 +40,9 @@ In this workshop you'll learn how to create a Kafka cluster in Confluent Cloud D
 	Fig 1: Above Architecture diagram shows how data is streamed from Confluent cloud to Redshift 
 
 ## Prerequisites
--	This Blog assumes you already have an active Confluent Cloud account. If not sign-up here: [Sign-Up for a Confluent Cloud Account](https://confluent.cloud/signup)
+-	This Post assumes you already have an active Confluent Cloud account. If not sign-up here: [Sign-Up for a Confluent Cloud Account](https://confluent.cloud/signup)
 
--	This Blog assumes you already have an Active AWS account. If not [Create and activate a new AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
+-	This Post assumes you already have an Active AWS account. If not [Create and activate a new AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
 
 ## Creating AWS Resources required for Redshift Streaming Module
 
@@ -172,7 +172,7 @@ Once On the Redshift Query Editor, select the cluster and login with redshift cl
 
 ![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/PreviewTable.png)
 
-You should be able to view the data streamed by the redshift connector. You may query the data or connect to [Amazon QuickSight](https://aws.amazon.com/quicksight/) to start  visualizing it. With this we have come to end of this blog post.
+You should be able to view the data streamed by the redshift connector. You may query the data or connect to [Amazon QuickSight](https://aws.amazon.com/quicksight/) to start  visualizing it. With this we have come to end of this post.
 
 ## Clean Up
 
