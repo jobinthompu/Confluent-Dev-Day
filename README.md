@@ -1,5 +1,7 @@
 # Seamlessly streaming data from Confluent Cloud into Amazon Redshift
 
+## Overview
+
 An Overview of this excersise is below:
 
 [Short Introduction](https://github.com/jobinthompu/Confluent-Dev-Day#short-introduction)\
