@@ -54,7 +54,7 @@ Click on below button to launch the CloudFormation template which will spin-up r
 
 [![Foo](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/LaunchStack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=Confluent-Redshift-Connector&templateURL=https://cloudformation-template-repo.s3.amazonaws.com/ConfluentRedshift.json)
 
-On the Quick Create Stack page, acknowledge the resource creations and click ‘Create Stack’. It may take a few minutes to complete the stack creation. Stack name is already populated as ‘Confluent-Redshift-Connector’
+On the Quick Create Stack page, acknowledge the resource creations and click *‘Create Stack’*. It may take a few minutes to complete the stack creation. Stack name is already populated as ‘Confluent-Redshift-Connector’
 
 Once created navigate to the [Stack Output](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&hideStacks=false&stackId=Confluent-Redshift-Connector) tab and note down Redshift End Point and Lambda Function Name. We will require it for future steps. 
 
