@@ -2,7 +2,7 @@
 
 ## Overview
 
-An Overview of this excersise is below:
+An Overview of this exercise is below:
 
 [Short Introduction](https://github.com/jobinthompu/Confluent-Dev-Day#short-introduction)\
 [Kafka Connect – Confluent Cloud Redshift Connector](https://github.com/jobinthompu/Confluent-Dev-Day#kafka-connect--confluent-cloud-redshift-connector)\
