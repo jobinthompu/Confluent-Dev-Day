@@ -54,7 +54,7 @@ Below CloudFormation Script will deploy:
 
 Click on below button to launch the CloudFormation template which will spin-up required resources for this workshop:
 
-[![Foo](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/LaunchStack.png?target=_blank)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=Confluent-Redshift-Connector&templateURL=https://cloudformation-template-repo.s3.amazonaws.com/ConfluentRedshift.json)
+[![Foo](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/LaunchStack.png" target="_blank)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/create/review?stackName=Confluent-Redshift-Connector&templateURL=https://cloudformation-template-repo.s3.amazonaws.com/ConfluentRedshift.json)
 
 On the Quick Create Stack page, acknowledge the resource creations and click **‘Create Stack’**. It may take a few minutes to complete the stack creation. Stack name is already populated as **‘Confluent-Redshift-Connector’**
 
