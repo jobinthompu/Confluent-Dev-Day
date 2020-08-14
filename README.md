@@ -61,7 +61,7 @@ On the Quick Create Stack page, acknowledge the resource creations and click **�
 Once created navigate to the [Stack Output](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/outputs?filteringText=&filteringStatus=active&viewNested=true&hideStacks=false&stackId=Confluent-Redshift-Connector) tab and note down Redshift End Point and Lambda Function Name. We will require it for future steps. 
 
 
-![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateCluster.png)
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CFT-Output.png)
 
 ## Creating Confluent Cloud Resources
 
@@ -71,10 +71,12 @@ Now let’s Launch Confluent Cloud Console from another tab on the browser: http
 
 Once logged in, click on the **Create Cluster** Icon on the screen to create a new Kafka Cluster. If you already have a cluster, you can create a new topic to complete the exercise.
 
-![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ClusterConf.png)
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/CreateCluster.png)
 
 
 On the next page,  let’s provide a name for the Cluster, say **Data2Redshift** and Select Provider as **Amazon Web Service**, Region as **us-east-1** and click continue. In a few mins your cluster will be ready to use. Once created, you can navigate to **‘Cluster Settings’** and note down the **Bootstrap Server** address, which you will need in the later part of this exercise.
+
+![alt tag](https://github.com/jobinthompu/Confluent-Dev-Day/blob/master/Resources/images/ClusterConf.png)
 
 ### Creating a Kafka Topic  
 
