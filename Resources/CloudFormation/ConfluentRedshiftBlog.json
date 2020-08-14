@@ -39,6 +39,50 @@
                 }
             }
         },
+        "ReadListS3": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "PolicyName": "ReadListS3",
+                "Roles": [{"Ref": "LauncherRole"}],
+                "PolicyDocument": {
+                  "Version": "2012-10-17",
+                  "Statement": [
+                    {
+                      "Sid": "Stmt1524515862554",
+                      "Action": [
+                        "s3:GetObject",
+                        "s3:ListBucket",
+                        "s3:ListObjects"
+                      ],
+                      "Effect": "Allow",
+                      "Resource": "*"
+                    }
+                  ]
+                }
+            }
+        },
+        "SaveLogs": {
+            "Type": "AWS::IAM::Policy",
+            "Properties": {
+                "PolicyName": "LogPolicy",
+                "Roles": [ {"Ref": "LauncherRole"}],
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Effect": "Allow",
+                            "Action": [
+                                "logs:CreateLogGroup",
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents",
+                                "logs:DescribeLogStreams"
+                            ],
+                            "Resource": "*"
+                        }
+                    ]
+                }
+            }
+        },
         "VPC": {
             "Type": "AWS::EC2::VPC",
             "Properties": {
